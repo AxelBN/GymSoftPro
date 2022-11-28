@@ -1,13 +1,46 @@
 {% extends 'HealthQuest/index.html' %}
 {% block content %}
 <h1>Usuarios</h1>
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-danger text-white mb-4">
+            <div class="card-body">Añadir usuario</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="create_users.html">View Details</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-success text-white mb-4">
+            <div class="card-body">Evaluación fisica</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="physical_evaluations.html">View Details</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
 <ul>
-{% for obj in HealthQuests %}
-    <li>
-        <a href="{{ models.HealthQuests }}"> {{ obj.name }}</a>
-    </li>
-{% empty %}
-    <li>No hay usuarios</li>
-{% endfor %}
+<div class="card-body">
+    <table id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Número</th>
+                <th>Dirección</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in object_list %}
+                <tr>
+                    <td>{{ obj.name }}</td>
+                    <td>{{ obj.phone_number }}</td>
+                    <td>{{ obj.address }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 </ul>
 {% endblock %}
