@@ -18,9 +18,14 @@ from django.urls import path
 
 from HealthQuest import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+from HealthQuest.views import users_list
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index)
+    path('', views.index),
+    path('tables.html/', views.user_view),
+    path('users.html/', users_list.as_view(), name='article-list'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

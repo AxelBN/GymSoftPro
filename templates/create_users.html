@@ -1,0 +1,37 @@
+{% extends 'HealthQuest/index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Usuarios</title>
+</head>
+<body>
+
+<div class="container">
+	<h2>Añadir Usuario</h2>
+
+	{% if messages %}
+	<ul class="messages">
+		{% for message in messages %}
+			<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+
+    <div class="row">
+		<form action="" method="post">
+			{% csrf_token %}
+			<table>
+			{{ user }}
+			</table>
+			<button type="submit" class="btn btn-primary btn-sm" value="">Añadir Usuario</button>
+		</form>
+    </div>
+</div>
+
+</body>
+{% endblock %}
+</html>

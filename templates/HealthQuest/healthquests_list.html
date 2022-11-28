@@ -1,0 +1,13 @@
+{% extends 'HealthQuest/index.html' %}
+{% block content %}
+<h1>Usuarios</h1>
+<ul>
+{% for obj in HealthQuests %}
+    <li>
+        <a href="{{ models.HealthQuests }}"> {{ obj.name }}</a>
+    </li>
+{% empty %}
+    <li>No hay usuarios</li>
+{% endfor %}
+</ul>
+{% endblock %}
