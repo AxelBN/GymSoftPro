@@ -20,7 +20,7 @@ class users_list(ListView):
         context['now'] = timezone.now()
         return context
 def user_view(request):
-    user = pe(request.POST or None)
+    user = Users(request.POST or None)
     if user.is_valid():
         user.save()
         messages.success(request, 'Usuario guardado')
@@ -35,7 +35,7 @@ def physical_evaluation_view(request):
     if physical_evaluations.is_valid():
         physical_evaluations.save()
         messages.success(request, 'Usuario guardado')
-        user = pe()
+        physical_evaluations = pe()
     else:
         messages.error(request, 'Error')
     context = {'physical_evaluations': physical_evaluations}

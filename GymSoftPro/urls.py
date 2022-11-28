@@ -26,8 +26,8 @@ urlpatterns = [
     path('', views.index),
     path('tables.html/', views.user_view),
     path('users/', users_list.as_view(), name='article-list'),
+    path('users/physical_evaluations.html/', views.physical_evaluation_view),
     path('users/create_users.html/', views.user_view),
-    path('users/physical_evaluations.html/', views.physical_evaluation_view)
 ]
 
 urlpatterns += staticfiles_urlpatterns()
