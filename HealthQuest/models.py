@@ -18,6 +18,7 @@ class Ailments (models.Model):
 
 class HealthQuests (models.Model):
     name = models.CharField(max_length=100, verbose_name= 'Nombre')
+    identification = models.IntegerField(verbose_name= 'Número de cedula', blank=True, null=True)
     Date_of_birth = models.DateField(default=datetime.date.today, verbose_name= 'Fecha de nacimiento')
     address = models.CharField(max_length=100)
     phone_number = models.IntegerField(verbose_name= 'Número telefonico')
