@@ -19,7 +19,7 @@ from django.urls import path
 from HealthQuest import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from HealthQuest.views import users_list
+from HealthQuest.views import users_list, upt_users
 
 urlpatterns = [
     path('admin/', admin.site.urls),

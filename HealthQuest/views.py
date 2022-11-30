@@ -1,7 +1,8 @@
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from django.views.generic import ListView
+from django.views.generic import ListView, UpdateView
 
 from .models import HealthQuests
 from .user import Users
@@ -40,3 +41,4 @@ def physical_evaluation_view(request):
         messages.error(request, 'Error')
     context = {'physical_evaluations': physical_evaluations}
     return render(request, 'physical_evaluations.html', context)
+
