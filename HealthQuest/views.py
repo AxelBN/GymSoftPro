@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.utils import timezone
 from django.views.generic import ListView, UpdateView
 
@@ -42,3 +43,11 @@ def physical_evaluation_view(request):
     context = {'physical_evaluations': physical_evaluations}
     return render(request, 'physical_evaluations.html', context)
 
+class updateuser(UpdateView, SuccessMessageMixin):
+    model = HealthQuests
+    fields = '__all__'
+    template_name = 'update.html'
+    success_message = 'Usuario actualizado'
+
+    def uptd_user(self):
+        return reverse('article-list')

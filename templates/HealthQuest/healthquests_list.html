@@ -1,7 +1,7 @@
 {% extends 'HealthQuest/index.html' %}
 {% block content %}
 <h1>Usuarios</h1>
-<div>
+<div class="row">
     <a class="btn btn-primary" href="create_users.html" role="button">Crear nuevo usuario</a>
     <a class="btn btn-primary" href="physical_evaluations.html" role="button">Evaluación fisica</a>
 </div>
@@ -15,16 +15,18 @@
                 <th>Dirección</th>
                 <th>Cedula</th>
                 <th>Edad</th>
+                <th>Eliminar</th>
             </tr>
         </thead>
         <tbody>
             {% for obj in object_list %}
                 <tr>
-                    <td><a href="update.html">{{ obj.name }}</a></td>
+                    <td><a href="update.html/{{ obj.id }}">{{ obj.name }}</a></td>
                     <td>{{ obj.phone_number }}</td>
                     <td>{{ obj.address }}</td>
                     <td>{{ obj.identification }}</td>
                     <td>{{ obj.anios }}</td>
+                    <td></td>
                 </tr>
             {% endfor %}
         </tbody>

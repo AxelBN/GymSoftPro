@@ -1,6 +1,8 @@
 import datetime
 from datetime import date
 from django.db import models
+from django.urls import reverse
+
 
 # Create your models here.
 
@@ -39,6 +41,9 @@ class HealthQuests (models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('article-list')
 
 class physical_evaluation (models.Model):
     client = models.ForeignKey(HealthQuests, on_delete=models.CASCADE, null=True, blank=True)
