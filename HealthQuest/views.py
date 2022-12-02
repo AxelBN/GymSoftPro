@@ -3,7 +3,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.utils import timezone
-from django.views.generic import ListView, UpdateView
+from django.views.generic import ListView, UpdateView, DeleteView
 
 from .models import HealthQuests
 from .user import Users
@@ -51,3 +51,14 @@ class updateuser(UpdateView, SuccessMessageMixin):
 
     def uptd_user(self):
         return reverse('article-list')
+
+
+class ContactoEliminar(SuccessMessageMixin, DeleteView):
+    model = HealthQuests
+    form = HealthQuests
+    fields = "__all__"
+
+def get_success_url(self):
+    success_message = 'Contacto eliminado correctamente.'
+    messages.success(self.request, (success_message))
+    return reverse('article-list')

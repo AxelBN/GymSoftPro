@@ -20,17 +20,28 @@
         </thead>
         <tbody>
             {% for obj in object_list %}
+            <form method="POST" action="eliminar/{{obj.id}}">
                 <tr>
                     <td><a href="update.html/{{ obj.id }}">{{ obj.name }}</a></td>
                     <td>{{ obj.phone_number }}</td>
                     <td>{{ obj.address }}</td>
                     <td>{{ obj.identification }}</td>
                     <td>{{ obj.anios }}</td>
-                    <td></td>
+                    <td><button class="btn btn-danger" onclick="return eliminar();" type="submit">Eliminar</button></td>
                 </tr>
+            </form>
             {% endfor %}
         </tbody>
     </table>
 </div>
+<script type="text/javascript">
+    function eliminar() {
+        var x = confirm("¿Está seguro de que desea eliminar el usuario?");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+</script>
 </ul>
 {% endblock %}
