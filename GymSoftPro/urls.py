@@ -19,17 +19,17 @@ from django.urls import path
 from HealthQuest import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from HealthQuest.views import users_list, updateuser, ContactoEliminar
+from HealthQuest.views import users_list, updateuser, deleteuser
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
     path('tables.html/', views.user_view),
-    path('users/', users_list.as_view(), name='article-list'),
+    path('users/', users_list.as_view(), name='users_list'),
     path('users/physical_evaluations.html/', views.physical_evaluation_view),
     path('users/create_users.html/', views.user_view),
-    path('users/update.html/<int:pk>', views.updateuser.as_view(template_name='update.html'), name='updt'),
-    path('app_contactos/eliminar/<int:pk>', ContactoEliminar.as_view(), name='eliminar'),
+    path('users/update.html/<int:pk>', views.updateuser.as_view(template_name='HealthQuest/update.html'), name='updt'),
+    path('delete_users.html/<int:pk>', views.deleteuser, name='eliminar'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -1,10 +1,10 @@
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.utils import timezone
 from django.views.generic import ListView, UpdateView, DeleteView
-
+from django.http import request
 from .models import HealthQuests
 from .user import Users
 from .physical_evaluations import pe
@@ -30,7 +30,7 @@ def user_view(request):
     else:
         messages.error(request, 'Error')
     context = {'user': user}
-    return render(request, 'create_users.html', context)
+    return render(request, 'HealthQuest/create_users.html', context)
 
 def physical_evaluation_view(request):
     physical_evaluations = pe(request.POST or None)
@@ -41,24 +41,20 @@ def physical_evaluation_view(request):
     else:
         messages.error(request, 'Error')
     context = {'physical_evaluations': physical_evaluations}
-    return render(request, 'physical_evaluations.html', context)
+    return render(request, 'HealthQuest/physical_evaluations.html', context)
 
 class updateuser(UpdateView, SuccessMessageMixin):
     model = HealthQuests
     fields = '__all__'
-    template_name = 'update.html'
+    template_name = 'HealthQuest/update.html'
     success_message = 'Usuario actualizado'
 
     def uptd_user(self):
-        return reverse('article-list')
+        return reverse('user_list')
 
 
-class ContactoEliminar(SuccessMessageMixin, DeleteView):
-    model = HealthQuests
-    form = HealthQuests
-    fields = "__all__"
+def deleteuser(request, pk):
+    user = get_object_or_404(HealthQuests, id=pk)
+    user.delete()
 
-def get_success_url(self):
-    success_message = 'Contacto eliminado correctamente.'
-    messages.success(self.request, (success_message))
-    return reverse('article-list')
+    return redirect('/users')

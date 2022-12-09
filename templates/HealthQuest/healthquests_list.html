@@ -1,8 +1,8 @@
 {% extends 'HealthQuest/index.html' %}
 {% block content %}
-<h1>Usuarios</h1>
+<h1>Clientes</h1>
 <div class="row">
-    <a class="btn btn-primary" href="create_users.html" role="button">Crear nuevo usuario</a>
+    <a class="btn btn-primary" href="create_users.html" role="button">Añadir cliente</a>
     <a class="btn btn-primary" href="physical_evaluations.html" role="button">Evaluación fisica</a>
 </div>
 <ul>
@@ -15,33 +15,23 @@
                 <th>Dirección</th>
                 <th>Cedula</th>
                 <th>Edad</th>
-                <th>Eliminar</th>
+                <th>Foto</th>
             </tr>
         </thead>
         <tbody>
             {% for obj in object_list %}
-            <form method="POST" action="eliminar/{{obj.id}}">
                 <tr>
                     <td><a href="update.html/{{ obj.id }}">{{ obj.name }}</a></td>
                     <td>{{ obj.phone_number }}</td>
                     <td>{{ obj.address }}</td>
                     <td>{{ obj.identification }}</td>
                     <td>{{ obj.anios }}</td>
-                    <td><button class="btn btn-danger" onclick="return eliminar();" type="submit">Eliminar</button></td>
+                    <td><img src="{{ obj.photo }}"></td>
                 </tr>
-            </form>
             {% endfor %}
         </tbody>
     </table>
 </div>
-<script type="text/javascript">
-    function eliminar() {
-        var x = confirm("¿Está seguro de que desea eliminar el usuario?");
-        if (x)
-            return true;
-        else
-            return false;
-    }
-</script>
+
 </ul>
 {% endblock %}

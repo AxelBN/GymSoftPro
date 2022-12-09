@@ -29,8 +29,8 @@ class HealthQuests (models.Model):
     emergency_number = models.IntegerField(verbose_name= 'Número de emergencia')
     heart_problems = models.CharField(max_length=100, default='Ninguno', verbose_name='Problemas cardiacos')
     allergies = models.CharField(max_length=100, default='Ninguno', verbose_name='Alergias')
-    ailments = models.ManyToManyField(Ailments, verbose_name='Padecimientos', null=True, blank=True)
-    joint_problems = models.ManyToManyField(Joint_problems, verbose_name='Problemas articulares', null=True, blank=True)
+    ailments = models.ManyToManyField(Ailments, verbose_name='Padecimientos', blank=True)
+    joint_problems = models.ManyToManyField(Joint_problems, verbose_name='Problemas articulares', blank=True)
     specify = models.CharField(max_length=200, default='Ninguno', verbose_name='Especifique')
     vision_difficulties = models.CharField(max_length=100, default='Ninguno', verbose_name='Dificultades de la vista')
     operations_surgeries = models.CharField(max_length=100, default='Ninguna', verbose_name='Operaciones o cirugias')
@@ -43,7 +43,7 @@ class HealthQuests (models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('article-list')
+        return reverse('users_list')
 
 class physical_evaluation (models.Model):
     client = models.ForeignKey(HealthQuests, on_delete=models.CASCADE, null=True, blank=True)
