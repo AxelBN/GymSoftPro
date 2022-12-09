@@ -1,0 +1,11 @@
+{% extends 'HealthQuest/index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+<form method="post">{% csrf_token %}
+    <p>Esta seguro que desea eliminar el usuario "{{ object }}"?</p>
+    {{ user }}
+    <input class="btn btn-primary" type="submit" value="Confirmar">
+</form>
+</html>
+{% endblock %}
