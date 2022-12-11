@@ -4,10 +4,6 @@
     <form method="post">{% csrf_token %}
         <h1>Información del cliente</h1>
         {{ form.as_p }}
-        <h1>Evaluación fisica</h1>
-    <form method="post">{% csrf_token %}
-
-    </form>
         <input class="btn btn-primary" type="submit" value="Actualizar">
         <a href="/delete_users.html/{{ object.id }}" class="btn btn-danger">Eliminar</a>
     </form>
