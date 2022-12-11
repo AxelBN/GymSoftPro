@@ -16,17 +16,19 @@
                 <th>Cedula</th>
                 <th>Edad</th>
                 <th>Foto</th>
+                <th>Evaluación Fisica</th>
             </tr>
         </thead>
         <tbody>
             {% for obj in object_list %}
                 <tr>
-                    <td><a href="update.html/{{ obj.id }}">{{ obj.name }}</a></td>
+                    <td><a href="update.html/{{ obj.id }}" class="btn">{{ obj.name }}</a></td>
                     <td>{{ obj.phone_number }}</td>
                     <td>{{ obj.address }}</td>
                     <td>{{ obj.identification }}</td>
                     <td>{{ obj.anios }}</td>
                     <td><img src="{{ obj.photo }}"></td>
+                    <td><a type="button" class="btn btn-primary" href="update_pe.html/{{ obj.id }}">Evaluación fisica </a></td>
                 </tr>
             {% endfor %}
         </tbody>

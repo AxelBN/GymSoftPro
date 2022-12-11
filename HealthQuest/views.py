@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.views.generic import ListView, UpdateView, DeleteView
 from django.http import request
-from .models import HealthQuests
+from .models import HealthQuests, physical_evaluation
 from .user import Users
 from .physical_evaluations import pe
 # Create your views here.
@@ -58,3 +58,12 @@ def deleteuser(request, pk):
     user.delete()
 
     return redirect('/users')
+
+class update_pe(UpdateView, SuccessMessageMixin):
+    model = physical_evaluation
+    fields = '__all__'
+    template_name = 'HealthQuest/update_pe.html'
+    success_message = 'Actualizado correctamente'
+
+    def uptd_pe(self):
+        return reverse('user_list')

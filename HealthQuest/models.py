@@ -21,7 +21,7 @@ class Ailments (models.Model):
 class HealthQuests (models.Model):
     name = models.CharField(max_length=100, verbose_name= 'Nombre')
     photo = models.FileField(max_length=254, null=True, blank=True, verbose_name='Foto')
-    identification = models.IntegerField(verbose_name= 'Número de cedula', blank=True, null=True)
+    identification = models.IntegerField(verbose_name= 'Número de cedula', blank=True, null=True, unique=True)
     Date_of_birth = models.DateField(default=datetime.date.today, verbose_name= 'Fecha de nacimiento')
     address = models.CharField(max_length=100)
     phone_number = models.IntegerField(verbose_name= 'Número telefonico')
@@ -63,3 +63,6 @@ class physical_evaluation (models.Model):
 
     def __str__(self):
         return self.client
+
+    def get_absolute_url(self):
+        return reverse('users_list')

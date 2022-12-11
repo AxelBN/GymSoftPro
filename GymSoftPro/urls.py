@@ -30,6 +30,7 @@ urlpatterns = [
     path('users/create_users.html/', views.user_view),
     path('users/update.html/<int:pk>', views.updateuser.as_view(template_name='HealthQuest/update.html'), name='updt'),
     path('delete_users.html/<int:pk>', views.deleteuser, name='eliminar'),
+    path('users/update_pe.html/<int:pk>', views.update_pe.as_view(template_name='HealthQuest/update_pe.html'), name='uptd_pe')
 ]
 
 urlpatterns += staticfiles_urlpatterns()
