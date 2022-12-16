@@ -4,6 +4,7 @@ from .models import HealthQuests, Ailments, Joint_problems, physical_evaluation
 
 class HealthQuestAdmin(admin.ModelAdmin):
     fields = ['name',
+              'photo',
               'Date_of_birth',
               'address',
               'phone_number',
