@@ -45,6 +45,19 @@ class HealthQuests (models.Model):
     def get_absolute_url(self):
         return reverse('users_list')
 
+class payments (models.Model):
+    client = models.OneToOneField(HealthQuests, on_delete=models.CASCADE, null=True, blank=True, verbose_name= 'Cliente')
+    date = models.DateField(default=datetime.date.today, verbose_name= 'Fecha de facturación')
+    payment_date = models.DateField(default=datetime.date.today, verbose_name= 'Fecha de pago')
+    amount = models.FloatField(verbose_name='Monto de pago', default=0)
+
+    def get_absolute_url(self):
+        return reverse('payments')
+
+    def __str__(self):
+        return self.client
+
+
 class physical_evaluation (models.Model):
     client = models.ForeignKey(HealthQuests, on_delete=models.CASCADE, null=True, blank=True)
     date = models.DateField(default=datetime.date.today, verbose_name= 'Fecha de evaluación')

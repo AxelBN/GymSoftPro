@@ -1,0 +1,39 @@
+{% extends 'HealthQuest/index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Pagos</title>
+</head>
+<body>
+<div class="row">
+        <a class="btn btn-primary" href="payments.html" role="button">Añadir</a>
+</div>
+<ul>
+<div class="card-body">
+    <table id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Fecha de facturación</th>
+                <th>Fecha de pago</th>
+                <th>Monto</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in object_list %}
+                <tr>
+                    <td><a href="update_payments/{{ obj.id }}" class="btn">{{ obj.client }}</a></td>
+                    <td>{{ obj.date }}</td>
+                    <td>{{ obj.payment_date }}</td>
+                    <td>{{ obj.amount }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</ul>
+</body>
+{% endblock %}
+</html>

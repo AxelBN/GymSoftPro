@@ -21,13 +21,16 @@ from GymSoftPro import settings
 from HealthQuest import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from HealthQuest.views import users_list, updateuser, deleteuser
+from HealthQuest.views import users_list, updateuser, deleteuser, payments_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
     path('tables.html/', views.user_view),
     path('users/', users_list.as_view(), name='users_list'),
+    path('payments_list/', payments_list.as_view(), name='payments'),
+    path('payments_list/update_payments/<int:pk>', views.update_payments.as_view(template_name='HealthQuest/update_payments.html'), name='uptd_payments'),
+    path('payments_list/payments.html/', views.payments_view),
     path('users/physical_evaluations.html/', views.physical_evaluation_view),
     path('users/create_users.html/', views.user_view),
     path('users/update.html/<int:pk>', views.updateuser.as_view(template_name='HealthQuest/update.html'), name='updt'),

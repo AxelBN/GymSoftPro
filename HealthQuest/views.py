@@ -5,8 +5,9 @@ from django.urls import reverse
 from django.utils import timezone
 from django.views.generic import ListView, UpdateView, DeleteView
 from django.http import request
-from .models import HealthQuests, physical_evaluation
+from .models import HealthQuests, physical_evaluation, payments
 from .user import Users
+from .payments import Payments
 from .physical_evaluations import pe
 # Create your views here.
 
@@ -21,6 +22,16 @@ class users_list(ListView):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
         return context
+
+class payments_list(ListView):
+    model = payments
+    paginate_by = 100
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['now'] = timezone.now()
+        return context
+
 def user_view(request):
     user = Users(request.POST or None)
     if user.is_valid():
@@ -31,6 +42,17 @@ def user_view(request):
         messages.error(request, 'Error')
     context = {'user': user}
     return render(request, 'HealthQuest/create_users.html', context)
+
+def payments_view(request):
+    payment = Payments(request.POST or None)
+    if payment.is_valid():
+        payment.save()
+        messages.success(request, 'Guardado')
+        payment = Payments()
+    else:
+        messages.error(request, 'Error')
+    context = {'payment': payment}
+    return render(request, 'HealthQuest/payments.html', context)
 
 def physical_evaluation_view(request):
     physical_evaluations = pe(request.POST or None)
@@ -52,6 +74,14 @@ class updateuser(UpdateView, SuccessMessageMixin):
     def uptd_user(self):
         return reverse('user_list')
 
+class update_payments(UpdateView, SuccessMessageMixin):
+    model = payments
+    fields = '__all__'
+    template_name = 'HealthQuest/update_payments.html'
+    success_message = 'Actualizado'
+
+    def uptd_payments(self):
+        return reverse('payments_list')
 
 def deleteuser(request, pk):
     user = get_object_or_404(HealthQuests, id=pk)
