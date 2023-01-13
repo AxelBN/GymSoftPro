@@ -7,7 +7,7 @@
 </div>
 <ul>
 <div class="card-body">
-    <table id="datatablesSimple">
+    <table class="table">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -15,7 +15,9 @@
                 <th>Dirección</th>
                 <th>Cedula</th>
                 <th>Edad</th>
+                <!---
                 <th>Foto</th>
+                --->
                 <th>Evaluación Fisica</th>
             </tr>
         </thead>
@@ -27,8 +29,10 @@
                     <td>{{ obj.address }}</td>
                     <td>{{ obj.identification }}</td>
                     <td>{{ obj.anios }}</td>
-                    <td><img src="{{ obj.photo }}"></td>
-                    <td><a type="button" class="btn btn-primary" href="update_pe.html/{{ obj.id }}">Evaluación fisica </a></td>
+                    <!---
+                    <td><img src="{{ obj.photo }}" class="img-fluid" width="7%"></td>
+                    --->
+                    <td><a type="button" class="btn btn-dark" href="update_pe.html/{{ obj.id }}">Evaluación fisica </a></td>
                 </tr>
             {% endfor %}
         </tbody>
