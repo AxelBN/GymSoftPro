@@ -3,8 +3,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.utils import timezone
-from django.views.generic import ListView, UpdateView, DeleteView
-from django.http import request
+from django.views.generic import ListView, UpdateView
 from .models import HealthQuests, physical_evaluation, payments
 from .user import Users
 from .payments import Payments
@@ -16,6 +15,15 @@ def index(request):
 
 class users_list(ListView):
     model = HealthQuests
+    paginate_by = 100
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['now'] = timezone.now()
+        return context
+
+class physical_evaluation_list_view(ListView):
+    model = physical_evaluation
     paginate_by = 100
 
     def get_context_data(self, **kwargs):

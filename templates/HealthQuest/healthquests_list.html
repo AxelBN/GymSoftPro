@@ -3,7 +3,6 @@
 <h1>Clientes</h1>
 <div class="row">
     <a class="btn btn-primary" href="create_users.html" role="button">Añadir cliente</a>
-    <a class="btn btn-primary" href="physical_evaluations.html" role="button">Evaluación fisica</a>
 </div>
 <ul>
 <div class="card-body">
@@ -18,7 +17,6 @@
                 <!---
                 <th>Foto</th>
                 --->
-                <th>Evaluación Fisica</th>
             </tr>
         </thead>
         <tbody>
@@ -32,7 +30,6 @@
                     <!---
                     <td><img src="{{ obj.photo }}" class="img-fluid" width="7%"></td>
                     --->
-                    <td><a type="button" class="btn btn-dark" href="update_pe.html/{{ obj.id }}">Evaluación fisica </a></td>
                 </tr>
             {% endfor %}
         </tbody>
