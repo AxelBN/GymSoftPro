@@ -4,12 +4,12 @@
 {% block content %}
 <head>
     <meta charset="UTF-8">
-    <title>Pagos</title>
+    <title>Evaluaciones Fisicas</title>
 </head>
 <body>
-<h1>Pagos</h1>
+<h1>Evaluaciones Fisicas</h1>
 <div class="row">
-        <a class="btn btn-primary" href="payments.html" role="button">Añadir</a>
+        <a class="btn btn-primary" href="physical_evaluations.html" role="button">Añadir</a>
 </div>
 <ul>
 <div class="card-body">
@@ -17,18 +17,20 @@
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Fecha de facturación</th>
-                <th>Fecha de pago</th>
-                <th>Monto</th>
+                <th>Fecha</th>
+                <th>Peso</th>
+                <th>Pocentaje de grasa</th>
+                <th>Masa muscular</th>
             </tr>
         </thead>
         <tbody>
             {% for obj in object_list %}
                 <tr>
-                    <td><a href="update_payments/{{ obj.id }}" class="btn">{{ obj.client }}</a></td>
+                    <td><a href="update_pe/{{ obj.id }}" class="btn">{{ obj.client }}</a></td>
                     <td>{{ obj.date }}</td>
-                    <td>{{ obj.payment_date }}</td>
-                    <td>{{ obj.amount }}</td>
+                    <td>{{ obj.weight }}</td>
+                    <td>{{ obj.body_fat }}</td>
+                    <td>{{ obj.muscle_mass }}</td>
                 </tr>
             {% endfor %}
         </tbody>

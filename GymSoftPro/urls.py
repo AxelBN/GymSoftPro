@@ -21,7 +21,8 @@ from GymSoftPro import settings
 from HealthQuest import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from HealthQuest.views import users_list, updateuser, deleteuser, payments_list
+from HealthQuest.views import users_list, updateuser, deleteuser, payments_list, physical_evaluation_view, \
+    physical_evaluation_list_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,13 +30,15 @@ urlpatterns = [
     path('tables.html/', views.user_view),
     path('users/', users_list.as_view(), name='users_list'),
     path('payments_list/', payments_list.as_view(), name='payments'),
+    path('evaluaciones_fisicas', physical_evaluation_list_view.as_view(), name='physical_evaluation'),
+    path('physical_evaluations.html', views.physical_evaluation_view    ),
     path('payments_list/update_payments/<int:pk>', views.update_payments.as_view(template_name='HealthQuest/update_payments.html'), name='uptd_payments'),
     path('payments_list/payments.html/', views.payments_view),
     path('users/physical_evaluations.html/', views.physical_evaluation_view),
     path('users/create_users.html/', views.user_view),
     path('users/update.html/<int:pk>', views.updateuser.as_view(template_name='HealthQuest/update.html'), name='updt'),
     path('delete_users.html/<int:pk>', views.deleteuser, name='eliminar'),
-    path('users/update_pe.html/<int:pk>', views.update_pe.as_view(template_name='HealthQuest/update_pe.html'), name='uptd_pe')
+    path('update_pe/<int:pk>', views.update_pe.as_view(template_name='HealthQuest/update_pe.html'), name='uptd_pe')
 ]
 
 urlpatterns += staticfiles_urlpatterns()
