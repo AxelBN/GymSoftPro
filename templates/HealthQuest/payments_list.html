@@ -27,7 +27,17 @@
                 <tr>
                     <td><a href="update_payments/{{ obj.id }}" class="btn">{{ obj.client }}</a></td>
                     <td>{{ obj.date }}</td>
-                    <td>{{ obj.payment_date }}</td>
+                    <td>
+                    {% if obj.payment_date <= obj.payment_red %}
+                        <div class="p-3 mb-2 bg-danger text-white">{{ obj.payment_date }}</div>
+                    <!---
+                    {% elif obj.payment_date == obj.payment_yellow %}
+                        <div class="p-3 mb-2 bg-warning text-white">{{ obj.payment_date }}</div>
+                    --->
+                    {% else %}
+                        {{ obj.payment_date }}
+                    {% endif %}
+                    </td>
                     <td>{{ obj.amount }}</td>
                 </tr>
             {% endfor %}

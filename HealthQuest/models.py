@@ -51,6 +51,9 @@ class payments (models.Model):
     payment_date = models.DateField(default=datetime.date.today, verbose_name= 'Fecha de pago')
     amount = models.FloatField(verbose_name='Monto de pago', default=0)
 
+    def payment_red (self):
+        return date.today()
+
     def get_absolute_url(self):
         return reverse('payments')
 
