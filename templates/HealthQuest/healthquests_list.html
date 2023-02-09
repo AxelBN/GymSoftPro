@@ -1,25 +1,37 @@
 {% extends 'HealthQuest/index.html' %}
 {% block content %}
-<h1>Clientes</h1>
+<h1></h1>
 <div class="row">
     <a class="btn btn-primary" href="create_users.html" role="button">Añadir cliente</a>
 </div>
+<h1></h1>
 <ul>
-<div class="card-body">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Número</th>
-                <th>Dirección</th>
-                <th>Cedula</th>
-                <th>Edad</th>
-                <!---
-                <th>Foto</th>
-                --->
-            </tr>
-        </thead>
-        <tbody>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Clientes
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Número</th>
+                    <th>Direccion</th>
+                    <th>Cedula</th>
+                    <th>Edad</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Número</th>
+                    <th>Direccion</th>
+                    <th>Cedula</th>
+                    <th>Edad</th>
+                </tr>
+            </tfoot>
+            <tbody>
             {% for obj in object_list %}
                 <tr>
                     <td><a href="update.html/{{ obj.id }}" class="btn">{{ obj.name }}</a></td>
@@ -27,14 +39,11 @@
                     <td>{{ obj.address }}</td>
                     <td>{{ obj.identification }}</td>
                     <td>{{ obj.anios }}</td>
-                    <!---
-                    <td><img src="{{ obj.photo }}" class="img-fluid" width="7%"></td>
-                    --->
                 </tr>
             {% endfor %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
-
 </ul>
 {% endblock %}

@@ -7,22 +7,36 @@
     <title>Pagos</title>
 </head>
 <body>
-<h1>Pagos</h1>
+<h1></h1>
 <div class="row">
         <a class="btn btn-primary" href="payments.html" role="button">Añadir</a>
 </div>
+<h1></h1>
 <ul>
-<div class="card-body">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Fecha de facturación</th>
-                <th>Fecha de pago</th>
-                <th>Monto</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Pagos
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha de facturacion</th>
+                    <th>Fecha de pago</th>
+                    <th>Monto</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha de facturacion</th>
+                    <th>Fecha de pago</th>
+                    <th>Monto</th>
+                </tr>
+            </tfoot>
+            <tbody>
             {% for obj in object_list %}
                 <tr>
                     <td><a href="update_payments/{{ obj.id }}" class="btn">{{ obj.client }}</a></td>
@@ -30,10 +44,8 @@
                     <td>
                     {% if obj.payment_date <= obj.payment_red %}
                         <div class="p-3 mb-2 bg-danger text-white">{{ obj.payment_date }}</div>
-                    <!---
-                    {% elif obj.payment_date == obj.payment_yellow %}
+                    {% elif obj.payment_yellow <= 7 %}
                         <div class="p-3 mb-2 bg-warning text-white">{{ obj.payment_date }}</div>
-                    --->
                     {% else %}
                         {{ obj.payment_date }}
                     {% endif %}
@@ -41,8 +53,9 @@
                     <td>{{ obj.amount }}</td>
                 </tr>
             {% endfor %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
 </ul>
 </body>
