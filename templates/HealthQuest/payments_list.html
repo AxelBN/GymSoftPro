@@ -30,10 +30,8 @@
                     <td>
                     {% if obj.payment_date <= obj.payment_red %}
                         <div class="p-3 mb-2 bg-danger text-white">{{ obj.payment_date }}</div>
-                    <!---
-                    {% elif obj.payment_date == obj.payment_yellow %}
+                    {% elif obj.payment_yellow <= 7 %}
                         <div class="p-3 mb-2 bg-warning text-white">{{ obj.payment_date }}</div>
-                    --->
                     {% else %}
                         {{ obj.payment_date }}
                     {% endif %}
