@@ -7,22 +7,36 @@
     <title>Pagos</title>
 </head>
 <body>
-<h1>Pagos</h1>
+<h1></h1>
 <div class="row">
         <a class="btn btn-primary" href="payments.html" role="button">Añadir</a>
 </div>
+<h1></h1>
 <ul>
-<div class="card-body">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Fecha de facturación</th>
-                <th>Fecha de pago</th>
-                <th>Monto</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Pagos
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha de facturacion</th>
+                    <th>Fecha de pago</th>
+                    <th>Monto</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha de facturacion</th>
+                    <th>Fecha de pago</th>
+                    <th>Monto</th>
+                </tr>
+            </tfoot>
+            <tbody>
             {% for obj in object_list %}
                 <tr>
                     <td><a href="update_payments/{{ obj.id }}" class="btn">{{ obj.client }}</a></td>
@@ -39,8 +53,9 @@
                     <td>{{ obj.amount }}</td>
                 </tr>
             {% endfor %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
 </ul>
 </body>
