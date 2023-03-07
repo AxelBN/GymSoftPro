@@ -127,3 +127,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media/')
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
+
+ALLOWED_HOSTS = ['68.183.24.166', 'localhost']
+
