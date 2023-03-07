@@ -3,6 +3,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.utils import timezone
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import generic
 from django.views.generic import ListView, UpdateView
 from .models import HealthQuests, physical_evaluation, payments
 from .user import Users
@@ -10,30 +12,37 @@ from .payments import Payments
 from .physical_evaluations import pe
 # Create your views here.
 
+class Index(LoginRequiredMixin, generic.TemplateView):
+    template_name = 'HealthQuest/index.html'
+    login_url = 'login'
+
 def index(request):
     return render(request, 'HealthQuest/index.html')
 
-class users_list(ListView):
+class users_list(LoginRequiredMixin, ListView):
     model = HealthQuests
     paginate_by = 100
+    login_url = 'login'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
         return context
 
-class physical_evaluation_list_view(ListView):
+class physical_evaluation_list_view(LoginRequiredMixin, ListView):
     model = physical_evaluation
     paginate_by = 100
+    login_url = 'login'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
         return context
 
-class payments_list(ListView):
+class payments_list(LoginRequiredMixin, ListView):
     model = payments
     paginate_by = 100
+    login_url = 'login'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -73,20 +82,22 @@ def physical_evaluation_view(request):
     context = {'physical_evaluations': physical_evaluations}
     return render(request, 'HealthQuest/physical_evaluations.html', context)
 
-class updateuser(UpdateView, SuccessMessageMixin):
+class updateuser(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
     model = HealthQuests
     fields = '__all__'
     template_name = 'HealthQuest/update.html'
     success_message = 'Usuario actualizado'
+    login_url = 'login'
 
     def uptd_user(self):
         return reverse('user_list')
 
-class update_payments(UpdateView, SuccessMessageMixin):
+class update_payments(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
     model = payments
     fields = '__all__'
     template_name = 'HealthQuest/update_payments.html'
     success_message = 'Actualizado'
+    login_url = 'login'
 
     def uptd_payments(self):
         return reverse('payments_list')
@@ -97,11 +108,12 @@ def deleteuser(request, pk):
 
     return redirect('/users')
 
-class update_pe(UpdateView, SuccessMessageMixin):
+class update_pe(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
     model = physical_evaluation
     fields = '__all__'
     template_name = 'HealthQuest/update_pe.html'
     success_message = 'Actualizado correctamente'
+    login_url = 'login'
 
     def uptd_pe(self):
         return reverse('user_list')
