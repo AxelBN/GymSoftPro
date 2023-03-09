@@ -3,7 +3,8 @@
 <html lang="en">
 {% block content %}
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Pagos</title>
 </head>
 <body>
@@ -18,26 +19,18 @@
         <i class="fas fa-table me-1"></i>
         Pagos
     </div>
-    <div class="card-body">
-        <table id="datatablesSimple">
+    <div class="table-responsive">
+        <table id="datatablesSimple" class="table">
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Fecha de facturacion</th>
-                    <th>Fecha de pago</th>
-                    <th>Monto</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha de facturacion</th>
+                    <th scope="col">Fecha de pago</th>
+                    <th scope="col">Monto</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Fecha de facturacion</th>
-                    <th>Fecha de pago</th>
-                    <th>Monto</th>
-                </tr>
-            </tfoot>
             <tbody>
-            {% for obj in object_list %}
+                {% for obj in object_list %}
                 <tr>
                     <td><a href="update_payments/{{ obj.id }}" class="btn">{{ obj.client }}</a></td>
                     <td>{{ obj.date }}</td>

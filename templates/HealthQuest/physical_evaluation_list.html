@@ -18,26 +18,17 @@
         <i class="fas fa-table me-1"></i>
         Evaluaciones Fisicas
     </div>
-    <div class="card-body">
-        <table id="datatablesSimple">
+    <div class="table-responsive">
+        <table id="datatablesSimple" class="table">
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Fecha</th>
-                    <th>Peso</th>
-                    <th>Porcentaje de grasa</th>
-                    <th>Masa muscular</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Peso</th>
+                    <th scope="col">Porcentaje de grasa</th>
+                    <th scope="col">Masa muscular</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Fecha</th>
-                    <th>Peso</th>
-                    <th>Porcentaje de grasa</th>
-                    <th>Masa muscular</th>
-                </tr>
-            </tfoot>
             <tbody>
             {% for obj in object_list %}
                 <tr>

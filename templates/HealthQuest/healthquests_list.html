@@ -11,26 +11,17 @@
         <i class="fas fa-table me-1"></i>
         Clientes
     </div>
-    <div class="card-body">
-        <table id="datatablesSimple">
+    <div class="table-responsive">
+        <table id="datatablesSimple" class="table">
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Número</th>
-                    <th>Direccion</th>
-                    <th>Cedula</th>
-                    <th>Edad</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Número</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Cedula</th>
+                    <th scope="col">Edad</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Número</th>
-                    <th>Direccion</th>
-                    <th>Cedula</th>
-                    <th>Edad</th>
-                </tr>
-            </tfoot>
             <tbody>
             {% for obj in object_list %}
                 <tr>
