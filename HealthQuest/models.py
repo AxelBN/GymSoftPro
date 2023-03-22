@@ -20,12 +20,11 @@ class Ailments (models.Model):
 
 class HealthQuests (models.Model):
     name = models.CharField(max_length=100, verbose_name= 'Nombre')
-    #photo = models.ImageField(upload_to='media/', null=True, blank=True, verbose_name='Foto')
     identification = models.IntegerField(verbose_name= 'Número de cedula', blank=True, null=True, unique=True)
     Date_of_birth = models.DateField(default=datetime.date.today, verbose_name= 'Fecha de nacimiento')
     address = models.CharField(max_length=100, blank=True, null=True)
     phone_number = models.IntegerField(verbose_name= 'Número telefonico')
-    emergency_contact = models.CharField(max_length=100, verbose_name= 'Contacto de emergencia', blank=True, null=True)
+    emergency_contact = models.CharField(max_length=100, verbose_name= 'contacto de emergencia', blank=True, null=True)
     emergency_number = models.IntegerField(verbose_name= 'Número de emergencia', blank=True, null=True)
     heart_problems = models.CharField(max_length=100, default='Ninguno', verbose_name='Problemas cardiacos')
     allergies = models.CharField(max_length=100, default='Ninguno', verbose_name='Alergias')
