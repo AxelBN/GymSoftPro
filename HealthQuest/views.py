@@ -21,7 +21,6 @@ def index(request):
 
 class users_list(LoginRequiredMixin, ListView):
     model = HealthQuests
-    paginate_by = 100
     login_url = 'login'
 
     def get_context_data(self, **kwargs):
@@ -31,7 +30,6 @@ class users_list(LoginRequiredMixin, ListView):
 
 class physical_evaluation_list_view(LoginRequiredMixin, ListView):
     model = physical_evaluation
-    paginate_by = 100
     login_url = 'login'
 
     def get_context_data(self, **kwargs):
@@ -41,7 +39,6 @@ class physical_evaluation_list_view(LoginRequiredMixin, ListView):
 
 class payments_list(LoginRequiredMixin, ListView):
     model = payments
-    paginate_by = 100
     login_url = 'login'
 
     def get_context_data(self, **kwargs):
