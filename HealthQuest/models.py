@@ -24,7 +24,7 @@ class HealthQuests (models.Model):
     Date_of_birth = models.DateField(default=datetime.date.today, verbose_name= 'Fecha de nacimiento')
     address = models.CharField(max_length=100, blank=True, null=True)
     phone_number = models.IntegerField(verbose_name= 'Número telefonico')
-    emergency_contact = models.CharField(max_length=100, verbose_name= 'contacto de emergencia', null=True, blank=True)
+    emergency_contact = models.CharField(max_length=100, verbose_name= 'Contacto de emergencia', null=True, blank=True)
     emergency_number = models.IntegerField(verbose_name= 'Número de emergencia', null=True, blank=True)
     heart_problems = models.CharField(max_length=100, default='Ninguno', verbose_name='Problemas cardiacos')
     allergies = models.CharField(max_length=100, default='Ninguno', verbose_name='Alergias')
